@@ -1,7 +1,10 @@
 # Repo Viewer
 
 ## OverView:
-**Repo Viewer** allow you to review all projects that listed in your `Gitlab Starred Project` in addition to the ability to view the `README.md` file.
+
+**Repo Viewer** allow you to view all your starred project in your `Github` account.  
+You can `star` & `unstar` projects easily and search for any repository using the amazing floating search bar.  
+You can also view the `README.md` file that is associated with each project.
 
 ## Features:
 * Authorization using the industry-standard protocol `OAuth 2.0`.
