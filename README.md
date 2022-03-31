@@ -4,7 +4,9 @@
 
 **Repo Viewer** is a production grade app which allows you to view all your starred project in your `Github` account.  
 You can `star` & `unstar` projects easily and search for any repository using the amazing floating search bar.  
-You can also view the `README.md` file that is associated with each project.
+You can also view the `README.md` file that is associated with each project.  
+
+![Preview](/preview.gif)
 
 ## Features:
 * Authorization using the industry-standard protocol `OAuth 2.0`.
