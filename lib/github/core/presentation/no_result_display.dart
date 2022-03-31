@@ -8,18 +8,21 @@ class NoResultDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SvgPicture.asset(
-          'assets/no_data.svg',
-          height: 100.w,
-        ),
-        Text(
-          "That's about everything we could find in your starred repos right now.",
-          style: Theme.of(context).textTheme.headline5,
-          textAlign: TextAlign.center,
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 150),
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            'assets/no_data.svg',
+            height: 100.w,
+          ),
+          Text(
+            "That's about everything we could find in your starred repos right now.",
+            style: Theme.of(context).textTheme.headline5,
+            textAlign: TextAlign.center,
+          )
+        ],
+      ),
     );
   }
 }

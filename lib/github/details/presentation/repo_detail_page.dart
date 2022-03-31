@@ -121,6 +121,7 @@ class _RepoDetailPageState extends ConsumerState<RepoDetailPage> {
                                     state.repoDetail.entity!,
                                     widget.repo,
                                     ref,
+                                    state.repoDetail.entity!.isStarred,
                                   );
                             },
                     );

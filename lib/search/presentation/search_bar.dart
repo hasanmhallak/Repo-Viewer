@@ -11,7 +11,6 @@ class SearchBar extends ConsumerStatefulWidget {
   final Widget body;
   final void Function(String searchTerm) onShouldNavigateToResultPage;
   final void Function() onSignOut;
-  final VoidCallback? openDrawer;
 
   const SearchBar({
     required this.title,
@@ -19,7 +18,6 @@ class SearchBar extends ConsumerStatefulWidget {
     required this.body,
     required this.onShouldNavigateToResultPage,
     required this.onSignOut,
-    required this.openDrawer,
   });
 
   @override
@@ -94,13 +92,6 @@ class _SearchBarState extends ConsumerState<SearchBar> {
             onPressed: widget.onSignOut,
           ),
         ),
-        FloatingSearchBarAction(
-          child: IconButton(
-            icon: const Icon(Icons.menu_rounded),
-            splashRadius: 18,
-            onPressed: widget.openDrawer,
-          ),
-        )
       ],
       onQueryChanged: (query) {
         ref

@@ -9,10 +9,8 @@ import '../../../core/shared/providers.dart';
 import '../../core/presentation/paginated_repos_list_view.dart';
 
 class StarredReposPage extends ConsumerStatefulWidget {
-  final VoidCallback openDrawer;
   const StarredReposPage({
     Key? key,
-    required this.openDrawer,
   }) : super(key: key);
   @override
   _StarredReposPageState createState() => _StarredReposPageState();
@@ -36,7 +34,6 @@ class _StarredReposPageState extends ConsumerState<StarredReposPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SearchBar(
-        openDrawer: widget.openDrawer,
         title: 'Starred repositories',
         hintText: 'Search all repositories...',
         onShouldNavigateToResultPage: (searchTerm) {

@@ -60,8 +60,8 @@ class PaginationLink with _$PaginationLink {
   /// Extracts [MaxPageNumber] from a given string.
   static int _extractPageNumber(String value) {
     final uriString = RegExp(
-            r"((https?:www\.)|(https?:\/\/)|(www\.))[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,6}(\/[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)?")
-        .stringMatch(value);
+      r"((https?:www\.)|(https?:\/\/)|(www\.))[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,6}(\/[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)?",
+    ).stringMatch(value);
     return int.parse(Uri.parse(uriString!).queryParameters['page']!);
   }
 

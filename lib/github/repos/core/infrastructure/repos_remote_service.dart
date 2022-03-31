@@ -1,6 +1,6 @@
+// ignore: depend_on_referenced_packages, implementation_imports
 import 'package:collection/src/iterable_extensions.dart';
 import 'package:dio/dio.dart';
-import 'package:repo_viewer/github/core/infrastructure/pagination_config.dart';
 
 import '../../../../core/infrastructure/dio_extensions.dart';
 import '../../../../core/infrastructure/remote_response.dart';
@@ -8,6 +8,7 @@ import '../../../../core/infrastructure/rest_api_exception.dart';
 import '../../../core/infrastructure/github_headers.dart';
 import '../../../core/infrastructure/github_headers_cache.dart';
 import '../../../core/infrastructure/github_repo_dto.dart';
+import '../../../core/infrastructure/pagination_config.dart';
 
 abstract class ReposRemoteService {
   final Dio _dio;

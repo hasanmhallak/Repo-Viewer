@@ -1,17 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:repo_viewer/github/core/shared/providers.dart';
-import 'package:repo_viewer/github/details/application/repo_detail_notifier.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:device_preview/device_preview.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../auth/application/auth_notifier.dart';
 import '../../auth/shared/providers.dart';
-import '../../drawer/presentation/drawer_page.dart';
-import '../../drawer/shared/providers.dart';
-import '../../github/repos/starred_repos/presentation/starred_repos_page.dart';
 import '../shared/providers.dart';
 import 'routes/app_router.gr.dart';
 
@@ -61,17 +56,8 @@ class AppWidget extends ConsumerWidget {
       next.maybeMap(
         orElse: () {},
         authenticated: (_) {
-          // Getting user Details.
-          ref.read(authUserNotifierProvider.notifier).getUserInfo();
-
           appRouter.pushAndPopUntil(
-            StarredReposRoute(openDrawer: () {}),
-            // DrawerStateRoute(
-            //   homePage: (openDrawer) {
-            //     return StarredReposPage(openDrawer: openDrawer);
-            //   },
-            //   drawerPage: () => const CostumeDrawer(),
-            // ),
+            const StarredReposRoute(),
             predicate: (_) => false,
           );
         },
@@ -92,6 +78,7 @@ class AppWidget extends ConsumerWidget {
           // locale: DevicePreview.locale(context),
           // builder: DevicePreview.appBuilder,
           title: 'Repo Viewer',
+          debugShowCheckedModeBanner: false,
           routeInformationParser: appRouter.defaultRouteParser(),
           routerDelegate: appRouter.delegate(),
           theme: _themeData(),

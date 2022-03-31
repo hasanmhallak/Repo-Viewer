@@ -35,9 +35,10 @@ class SearchHistoryRepository {
       _addSearchTerm(term, _database.instance);
 
   Future<void> _addSearchTerm(String term, DatabaseClient db) async {
-    final existingKey = await _store.findKey(db,
-        finder:
-            Finder(filter: Filter.custom((record) => record.value == term)));
+    final existingKey = await _store.findKey(
+      db,
+      finder: Finder(filter: Filter.custom((record) => record.value == term)),
+    );
 
     if (existingKey != null) {
       await putSearchedTermFirst(term);

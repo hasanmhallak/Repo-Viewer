@@ -1,10 +1,10 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:repo_viewer/github/core/domain/github_repo.dart';
-import 'package:repo_viewer/github/core/shared/providers.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/domain/fresh.dart';
 import '../../core/domain/github_failure.dart';
+import '../../core/domain/github_repo.dart';
+import '../../core/shared/providers.dart';
 import '../domain/github_repo_detail.dart';
 import '../infrastructure/repo_detail_repository.dart';
 
@@ -57,7 +57,11 @@ class RepoDetailNotifier extends StateNotifier<RepoDetailState> {
   // and it's a failure then you will update the UI again.
   // always use this with icons and buttons, to not make the user feels that there's a lag.
   Future<void> switchStarredStatus(
-      GithubRepoDetail repoDetail, GithubRepo repo, WidgetRef ref) async {
+    GithubRepoDetail repoDetail,
+    GithubRepo repo,
+    WidgetRef ref,
+    bool isStarred,
+  ) async {
     // in order for us to reverse back to the previouse state, we must call this method
     // only if the state was _LoadSuccess because it's the only state that has
     // the starred state.
@@ -89,9 +93,11 @@ class RepoDetailNotifier extends StateNotifier<RepoDetailState> {
                 return state = stateCopy;
               } else {
                 //TODO: implements delete.
-                await ref
-                    .read(starredReposNotifierProvider.notifier)
-                    .deleteStarredRepo(repo);
+                if (isStarred) {
+                  await ref
+                      .read(starredReposNotifierProvider.notifier)
+                      .deleteStarredRepo(repo);
+                }
                 return state = state.copyWith(
                   hasStarredStatusChanged: true,
                 );

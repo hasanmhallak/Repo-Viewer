@@ -78,6 +78,7 @@ class RepoDetailLocalService {
         '/repos/$fullName/readme',
       ),
     );
-    return _store.record(fullName).delete(_database.instance);
+    await _store.record(fullName).delete(_database.instance);
+    return;
   }
 }

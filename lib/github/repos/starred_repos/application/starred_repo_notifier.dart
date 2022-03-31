@@ -1,4 +1,4 @@
-import 'package:repo_viewer/github/core/domain/github_repo.dart';
+import '../../../core/domain/github_repo.dart';
 
 import '../../core/infrastructure/paginated_repos_notifier.dart';
 import '../infrastructure/starred_repo_repository.dart';
