@@ -15,7 +15,7 @@ You can also view the `README.md` file that is associated with each project.
 * Ensure the most recent version of records using `HTTP ETag` mechanism.
 * HTTP Interceptor to modify all requests in order to authorize them with `Credentials`.
 * Feature based architecture that allow good maintainability and scalability with some of Domain-Driven-Development consepts.
-* Great error handling using functional programing.
+* Great error handling using functional programming.
 * Riverpod as state management solution.
 * Star & Unstar repos easily.
 * Search for any repos using the floating search bar.
