@@ -86,8 +86,9 @@ class StarredRepoLocalService {
           _sembastDatabase.instance,
           finder: Finder(offset: databaseIndex),
         )
-        .then((value) =>
-            value.map((e) => GithubRepoDTO.fromJson(e.value)).toList());
+        .then(
+          (value) => value.map((e) => GithubRepoDTO.fromJson(e.value)).toList(),
+        );
     // get the keys.
     final keysToUpdate = records.map((e) => e.id).toList();
 
@@ -95,15 +96,17 @@ class StarredRepoLocalService {
 
     // delete the repo from the records list.
     // TODO: you can use Sets to improve time complexity.
-    keysToUpdate.removeAt(0);
+    keysToUpdate.removeLast();
     records.removeAt(0);
     final recordsToUpdate =
         records.map((e) => e.copyWith(id: e.id != 0 ? e.id - 1 : 0)).toList();
 
     // update database.
     // await _db.saveRecords(keysToUpdate, records);
-    await _store.records(keysToUpdate).put(_sembastDatabase.instance,
-        recordsToUpdate.map((e) => e.toJson()).toList());
+    await _store.records(keysToUpdate).put(
+          _sembastDatabase.instance,
+          recordsToUpdate.map((e) => e.toJson()).toList(),
+        );
 
     // remove the last item.
     // await _db.deleteRecord(lastItemKeyToDelete);
