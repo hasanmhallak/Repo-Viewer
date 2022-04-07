@@ -57,30 +57,8 @@ class StarredRepoLocalService {
   }
 
   Future<void> deleteRepo(GithubRepo dto) async {
-    // final records = await _store.find(
-    //   _sembastDatabase.instance,
-    //   finder: Finder(offset: dto.id),
-    // );
-
-    // final keyToRemove = records.removeAt(0).key;
-    // await _store.record(keyToRemove).delete(_sembastDatabase.instance);
-    // await _store
-    //     .records(
-    //       records.map((e) => e.key),
-    //     )
-    //     .put(
-    //       _sembastDatabase.instance,
-    //       records
-    //           .map(
-    //             (e) => e.value,
-    //           )
-    //           .toList(),
-    //     );
-
     final databaseIndex = dto.id;
-    // if (databaseIndex != 0) {
-    // get all repos which we want to update its keys when we delete the repo.
-    // the repo we want to delete is at index 0.
+
     final records = await _store
         .find(
           _sembastDatabase.instance,
@@ -89,7 +67,8 @@ class StarredRepoLocalService {
         .then(
           (value) => value.map((e) => GithubRepoDTO.fromJson(e.value)).toList(),
         );
-    // get the keys.
+
+    // get the keys that we want to update its id after delete.
     final keysToUpdate = records.map((e) => e.id).toList();
 
     final lastItemKeyToDelete = keysToUpdate.last;
@@ -102,17 +81,12 @@ class StarredRepoLocalService {
         records.map((e) => e.copyWith(id: e.id != 0 ? e.id - 1 : 0)).toList();
 
     // update database.
-    // await _db.saveRecords(keysToUpdate, records);
     await _store.records(keysToUpdate).put(
           _sembastDatabase.instance,
           recordsToUpdate.map((e) => e.toJson()).toList(),
         );
 
     // remove the last item.
-    // await _db.deleteRecord(lastItemKeyToDelete);
     await _store.record(lastItemKeyToDelete).delete(_sembastDatabase.instance);
-    // } else {
-    //   await _store.record(0).delete(_sembastDatabase.instance);
-    // }
   }
 }
