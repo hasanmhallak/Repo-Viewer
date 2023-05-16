@@ -14,7 +14,7 @@ dependencies:
   oauth2: ^2.0.0
   flutter_secure_storage: ^4.2.0
   dartz: ^0.10.1
-  dio: ^4.0.4
+  dio: ^5.1.2
   freezed_annotation: ^1.1.0
   webview_flutter: ^2.0.4
   flash: ^1.5.1
